@@ -70,13 +70,37 @@ SELECT name FROM city
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different parts of the globe! She's headed to South America as we speak; go find a city whose name is like the one we were headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
+-- we want to use the LIKE statement for when a city is like Serravalle
 
+SELECT name, countrycode FROM city
+    WHERE name LIKE 'Serr%'
 
+--#	name	countrycode
+--1	Serra	BRA
+--2	Serravalle	SMR
+
+-- what country is BRA
+SELECT name FROM country
+    WHERE code = 'BRA'
+
+-- #	name
+-- 1	Brazil
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll follow right behind you!
 
+-- find the city.id in country of BRA 
+SELECT capital FROM country
+    WHERE code = 'BRA'
 
+-- #	capital
+-- 1	211
 
+-- find the name of the city at city.id = 211
+SELECT name FROM city
+    WHERE id = 211
+
+-- #	name
+-- 1	Bras�lia
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to the boarding gates. We have one chance to catch her, we just have to know where she's heading and beat her to the landing dock.
 
@@ -89,10 +113,16 @@ SELECT name FROM city
 -- So I'm off to add one to the population I find
 -- In a city of ninety-one thousand and now, eighty five.
 
-
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 
+-- I'm going to find all cities between 91k in population
+
+SELECT name, population
+    FROM city
+    WHERE population = 91085 - 1
 
 
+-- #	name	population
+-- 1	Santa Monica	91084
 
--- She's in ____________________________!
+-- She's in __SANTA MONICA__________________________!
